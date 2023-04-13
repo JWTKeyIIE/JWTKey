@@ -1,0 +1,1 @@
+Analyzing JAR File: /home/xu/xu/JWTGuardTestLib/1_jwt_repo_order_by_star/more1000/unpressed/2_murraco_spring-boot-jwt/murraco-spring-boot-jwt-cf2ebed/target/jwt-auth-service-1.0.0.jar
