@@ -10,7 +10,6 @@ public class JavajwtConstantKeyFinder extends ConstantKeyFinder {
     private static final Logger log =
             org.apache.logging.log4j.LogManager.getLogger(JavajwtConstantKeyFinder.class);
     private static final List<Criteria> CRITERIA_LIST = new ArrayList<>();
-    private static final List<String> CRITERIA_CLASSES = new ArrayList<>();
     static {
         Criteria criteria0 = new Criteria();
         criteria0.setClassName("com.auth0.jwt.algorithms.Algorithm");
@@ -43,7 +42,6 @@ public class JavajwtConstantKeyFinder extends ConstantKeyFinder {
         criteria5.setParam(2);
         CRITERIA_LIST.add(criteria5);
 
-
         CRITERIA_CLASSES.add("com.auth0.jwt.algorithms.Algorithm");
     }
     @Override
@@ -54,6 +52,4 @@ public class JavajwtConstantKeyFinder extends ConstantKeyFinder {
     public String getLibName() {
         return "java-jwt";
     }
-
-    public List<String> getCriteriaClasses(){return CRITERIA_CLASSES;}
 }

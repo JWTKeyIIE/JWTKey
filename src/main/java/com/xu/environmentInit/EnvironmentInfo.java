@@ -18,7 +18,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 import java.util.function.Function;
-import java.util.regex.Pattern;
 
 //用于定义程序需要的环境信息
 public class EnvironmentInfo {
@@ -113,8 +112,7 @@ public class EnvironmentInfo {
         }
 
         this.messagingType = messageType;
-        String[] pkgs = sourcePkg.split(Pattern.quote(System.getProperty("file.separator")));
-//        String[] pkgs = sourcePkg.split(System.getProperty("file.separator"));
+        String[] pkgs = sourcePkg.split(System.getProperty("file.separator"));
         this.packageName = pkgs[pkgs.length - 1].split("\\.")[0];
 
         this.setPackageRootDir();
@@ -155,8 +153,8 @@ public class EnvironmentInfo {
     }
     public String getAndroidHome() {
         if (StringUtils.isEmpty(this.androidHome))
-             this.androidHome = System.getenv("ANDROID_HOME").replaceAll("//", "/");
-//            this.androidHome = "/home/xu/Android/android-sdk-linux";
+            // this.androidHome = System.getenv("ANDROID_HOME").replaceAll("//", "/");
+            this.androidHome = "/home/xu/Android/android-sdk-linux";
 
         return this.androidHome;
     }
@@ -265,8 +263,7 @@ public class EnvironmentInfo {
             case WAR:
             case APK:
             case DIR:
-                String[] split = this.getSource().get(0).split(Pattern.quote(Utils.fileSep));
-//                String[] split = this.getSource().get(0).split(Utils.fileSep);
+                String[] split = this.getSource().get(0).split(Utils.fileSep);
                 this.packageRootDir = split[split.length - 1] + Utils.fileSep;
                 break;
             case JAVAFILES:
@@ -293,8 +290,8 @@ public class EnvironmentInfo {
                     break;
                 case JAVAFILES:
                 case DIR:
-          this.javaHome = System.getenv("JAVA7_HOME").replaceAll("//", "/");
-//                    this.javaHome = "/home/xu/java/jdk1.7.0_80";
+//          this.javaHome = System.getenv("JAVA7_HOME").replaceAll("//", "/");
+                    this.javaHome = "/home/xu/java/jdk1.7.0_80";
 //                    this.javaHome = "/home/xu/java/jdk1.8.0_181";
 //          this.javaHome = System.getenv("JAVA_HOME").replaceAll("//", "/");
                     break;

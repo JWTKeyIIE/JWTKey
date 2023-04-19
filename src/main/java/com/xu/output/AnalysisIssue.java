@@ -8,7 +8,6 @@ import com.xu.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
-import java.util.regex.Pattern;
 
 public class AnalysisIssue {
     private String fullPathName;
@@ -157,8 +156,7 @@ public class AnalysisIssue {
         String relativePath = null;
         if (sources.size() == 1) {
             String fullSource = sources.get(0);
-            String[] split = fullSource.split(Pattern.quote(Utils.fileSep));
-//            String[] split = fullSource.split(Utils.fileSep);
+            String[] split = fullSource.split(Utils.fileSep);
             fullSource = split[split.length - 1];
 
             if (fullSource.endsWith(":dir"))

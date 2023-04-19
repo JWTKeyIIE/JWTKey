@@ -19,7 +19,6 @@ public class Legacy {
             if (sourceKtr != sources.size() - 1) out.append(",");
         }
         out.append("\n");
-        out.append("=======================================\n" + "         *** JWT misuse****          \n" + "=======================================\n");
 
         return out.toString();
     }

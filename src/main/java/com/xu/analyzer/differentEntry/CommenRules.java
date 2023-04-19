@@ -28,48 +28,46 @@ public class CommenRules {
         /**
          * java-jwt
          */
-//        javaJwtRuleList.add(new CertificateAllFinder());
-//        javaJwtRuleList.add(new JavajwtConstantKeyFinder());
-//        javaJwtRuleList.add(new JavaJwtHttpFinder());
-//        javaJwtRuleList.add(new JavajwtRsaApiFinder());
-//        javaJwtRuleList.add(new JavaJwtRsaHardcodedKeyFinder());
-//        javaJwtRuleList.add(new SpringValueChecker());
-//        javaJwtRuleList.add(new CertificateAllFinder());
+        javaJwtRuleList.add(new JavajwtConstantKeyFinder());
+        javaJwtRuleList.add(new JavaJwtHttpFinder());
+        javaJwtRuleList.add(new JavajwtRsaApiFinder());
+        javaJwtRuleList.add(new JavaJwtRsaHardcodedKeyFinder());
+        javaJwtRuleList.add(new SpringValueChecker());
+        javaJwtRuleList.add(new CertificateAllFinder());
         /**
          * Jose4j
          */
         jose4jRuleList.add(new Jose4jConstantKeyFinder());
         jose4jRuleList.add(new Jose4jHttpFinder());
         jose4jRuleList.add(new SpringValueChecker());
-//        jose4jRuleList.add(new CertificateAllFinder());
+        jose4jRuleList.add(new CertificateAllFinder());
         /**
          * nimbus
          */
         nimbusRuleList.add(new NimbusJwtConstantKeyFinder());
         nimbusRuleList.add(new NimbusJwtHttpFinder());
         nimbusRuleList.add(new SpringValueChecker());
-//        nimbusRuleList.add(new CertificateAllFinder());
+        nimbusRuleList.add(new CertificateAllFinder());
         /**
          * jjwt
          */
-        jjwtRuleList.add(new CertificateAllFinder());
         jjwtRuleList.add(new JjwtConstantKeyFinder());
         jjwtRuleList.add(new SpringValueChecker());
-//        jjwtRuleList.add(new JjwtAsyKeyFinder());
+        jjwtRuleList.add(new CertificateAllFinder());
         /**
          * fusionJwt
          */
         fusionJwtRuleList.add(new FusionauthConstantKeyFinder());
         fusionJwtRuleList.add(new FusionauthHttpFinder());
         fusionJwtRuleList.add(new SpringValueChecker());
-//        fusionJwtRuleList.add(new CertificateAllFinder());
+        fusionJwtRuleList.add(new CertificateAllFinder());
         /**
          * Vertx Jwt
          */
         //Other
         //short Rsa Key
         vertxJwtRuleList.add(new SpringValueChecker());
-//        vertxJwtRuleList.add(new CertificateAllFinder());
+        vertxJwtRuleList.add(new CertificateAllFinder());
 
         /**
          * List contain all rule checker
@@ -93,6 +91,6 @@ public class CommenRules {
         //Other
         //short Rsa Key
         commonRuleList.add(new SpringValueChecker());
-//        commonRuleList.add(new CertificateAllFinder());
+        commonRuleList.add(new CertificateAllFinder());
     }
 }

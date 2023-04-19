@@ -17,7 +17,7 @@ import java.util.Map;
 
 public abstract class BaseRuleChecker implements RuleChecker{
     private static final Logger log = org.apache.logging.log4j.LogManager.getLogger(BaseRuleChecker.class);
-//    public static final List<String> CRITERIA_CLASSES = new ArrayList<>();
+    public static final List<String> CRITERIA_CLASSES = new ArrayList<>();
 
     @Override
     public void checkRule(SourceType type,
@@ -51,8 +51,6 @@ public abstract class BaseRuleChecker implements RuleChecker{
         createAnalysisOutput(xmlFileStr, sourcePaths, output);
     }
     public abstract List<Criteria> getCriteriaList();
-
-    public abstract List<String> getCriteriaClasses();
 
     public abstract void analyzeSlice(Analysis analysis);
 

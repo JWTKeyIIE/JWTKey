@@ -28,8 +28,7 @@ public class ArgumentCheck {
 
         if(args.contains(argsIdentifier.HELP.getArg())){
             //如果需要Help文件，返回Help文件
-//            log.debug("return help，需要添加异常处理文件：待处理");
-            log.debug("return help");
+            log.debug("return help，需要添加异常处理文件：待处理");
             throw new ExceptionHandler("return Help message",ExceptionId.HELP);
         }
 
@@ -39,14 +38,12 @@ public class ArgumentCheck {
         try {
             cmd = new DefaultParser().parse(cmdLineArgs,args.toArray(new String[0]));
         } catch (ParseException e) {
-//            log.debug("解析参数出现错误：" + e.getMessage());
-            log.debug("parse parameters error");
+            log.debug("解析参数出现错误：" + e.getMessage());
             e.printStackTrace();
         }
 
         //清理收到的参数,将argsIdentifier中没有定义的参数筛选出来
-//        log.info("清理输出相关的参数");
-        log.info("clean undefined parameters");
+        log.info("清理输出相关的参数");
         ArrayList<String> cleanArgs = new ArrayList<>(args);
         for (argsIdentifier arg : argsIdentifier.values()) {
             if (cmd.hasOption(arg.getId())) {

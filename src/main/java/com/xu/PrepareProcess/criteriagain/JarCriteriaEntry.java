@@ -39,14 +39,14 @@ public class JarCriteriaEntry implements EntryHandler {
             classNames.addAll(Utils.getClassNamesFromJarArchive(dependency));
         Scene.v().setSootClassPath(
                 Utils.join(
-                        ";",
+                        ":",
                         projectJarPath,
                         Utils.getBaseSoot(info.getJavaHome()),
-                        Utils.join(";", Utils.getJarsInDirectory(projectDependencyPath))));
+                        Utils.join(":", Utils.getJarsInDirectory(projectDependencyPath))));
         log.info("Setting the soot class path as: " + Scene.v().getSootClassPath());
 
         log.debug("Begin load Soot class");
-        String criteriaClass = "RSA1_5";
+        String criteriaClass = "controller.AuthenticationFilter";
         loadBaseSootInfo(classNames,null,criteriaClass);
     }
 
@@ -100,8 +100,11 @@ public class JarCriteriaEntry implements EntryHandler {
         Scene.v().setDoneResolving();
         Options.v().set_prepend_classpath(true);
         Options.v().set_no_bodies_for_excluded(true);
+//        getCriteriaClassMethod("org.example.APP");
 
-        getCriteriaClassMethod("java.util.random");
+//        getCriteriaClassMethod("com.example.AzureAdJwtToken");
+
+        getCriteriaClassMethod("controller.AuthenticationFilter");
     }
     private static void getCriteriaClassMethod(String criteriaClass) {
         SootClass runningClass = Scene.v().getSootClass(criteriaClass);
@@ -122,6 +125,7 @@ public class JarCriteriaEntry implements EntryHandler {
                         System.err.println(e);
                         continue;
                     }
+                    //为每个给定的方法体Body构造关系实例图
                     UnitGraph graph = new ExceptionalUnitGraph(b);
                     System.out.println(b.toString());
                 }

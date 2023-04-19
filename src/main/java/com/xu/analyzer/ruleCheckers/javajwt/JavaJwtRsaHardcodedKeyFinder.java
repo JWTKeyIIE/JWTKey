@@ -28,7 +28,6 @@ public class JavaJwtRsaHardcodedKeyFinder extends BaseRuleChecker {
             org.apache.logging.log4j.LogManager.getLogger(JavaJwtRsaHardcodedKeyFinder.class);
     private static final List<Criteria> CRITERIA_LIST = new ArrayList<>();
     public static final List<String> PREDICTABLE_SOURCES = new ArrayList<>();
-    private static final List<String> CRITERIA_CLASSES = new ArrayList<>();
     private final String rule = "6"; //ConstantKey
 
 
@@ -57,11 +56,6 @@ public class JavaJwtRsaHardcodedKeyFinder extends BaseRuleChecker {
     @Override
     public List<Criteria> getCriteriaList() {
         return CRITERIA_LIST;
-    }
-
-    @Override
-    public List<String> getCriteriaClasses() {
-        return CRITERIA_CLASSES;
     }
 
     @Override

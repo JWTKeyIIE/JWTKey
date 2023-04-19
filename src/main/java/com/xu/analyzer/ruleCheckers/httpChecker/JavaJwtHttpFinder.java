@@ -21,8 +21,6 @@ import java.util.regex.Pattern;
 public class JavaJwtHttpFinder extends UnsecureHttpFinder {
     private static final Logger log =
             org.apache.logging.log4j.LogManager.getLogger(JavaJwtHttpFinder.class);
-
-    private static final List<String> CRITERIA_CLASSES = new ArrayList<>();
     private static final List<String> HTTP_URL_PATTERN = new ArrayList<>();
     private static final List<Criteria> CRITERIA_LIST = new ArrayList<>();
     private Map<UnitContainer, List<String>> predictableSourcMap = new HashMap<>();
@@ -63,11 +61,6 @@ public class JavaJwtHttpFinder extends UnsecureHttpFinder {
     @Override
     public List<Criteria> getCriteriaList() {
         return CRITERIA_LIST;
-    }
-
-    @Override
-    public List<String> getCriteriaClasses() {
-        return CRITERIA_CLASSES;
     }
 
     @Override

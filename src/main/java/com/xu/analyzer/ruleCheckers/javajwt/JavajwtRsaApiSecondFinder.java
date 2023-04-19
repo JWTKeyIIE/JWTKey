@@ -22,7 +22,6 @@ public class JavajwtRsaApiSecondFinder extends BaseRuleChecker {
             org.apache.logging.log4j.LogManager.getLogger(JavajwtRsaApiSecondFinder.class);
     private static final List<Criteria> CRITERIA_LIST = new ArrayList<>();
     private static final List<String> ANALYSIS_LIST = new ArrayList<>();
-    private static final List<String> CRITERIA_CLASSES = new ArrayList<>();
     public static final List<Analysis> analysis_result = new ArrayList<>();
 
     static {
@@ -101,11 +100,6 @@ public class JavajwtRsaApiSecondFinder extends BaseRuleChecker {
     @Override
     public List<Criteria> getCriteriaList() {
         return CRITERIA_LIST;
-    }
-
-    @Override
-    public List<String> getCriteriaClasses() {
-        return CRITERIA_CLASSES;
     }
 
     @Override

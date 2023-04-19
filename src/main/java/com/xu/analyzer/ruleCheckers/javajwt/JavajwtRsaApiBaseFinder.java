@@ -14,7 +14,6 @@ import java.util.Map;
 public class JavajwtRsaApiBaseFinder extends BaseRuleChecker {
     private static final Logger log = org.apache.logging.log4j.LogManager.getLogger(JavajwtRsaApiBaseFinder.class);
     private static final List<Criteria> CRITERIA_LIST = new ArrayList<>();
-    private static final List<String> CRITERIA_CLASSES = new ArrayList<>();
     public static final List<Analysis> analysis_result = new ArrayList<>();
     static {
         Criteria criteria1 = new Criteria();
@@ -45,11 +44,6 @@ public class JavajwtRsaApiBaseFinder extends BaseRuleChecker {
     @Override
     public List<Criteria> getCriteriaList() {
         return CRITERIA_LIST;
-    }
-
-    @Override
-    public List<String> getCriteriaClasses() {
-        return CRITERIA_CLASSES;
     }
 
     @Override

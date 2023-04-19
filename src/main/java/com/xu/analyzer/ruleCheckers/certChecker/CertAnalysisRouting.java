@@ -96,10 +96,10 @@ public class CertAnalysisRouting {
         Scene.v()
                 .setSootClassPath(
                         Utils.join(
-                                ";",
+                                ":",
                                 projectJarPath,
                                 Utils.getBaseSoot(javaHome),
-                                Utils.join(";", Utils.getJarsInDirectory(projectDependencyPath))));
+                                Utils.join(":", Utils.getJarsInDirectory(projectDependencyPath))));
         log.info("Setting the soot class path as: " + Scene.v().getSootClassPath());
 
         loadBaseSootInfo(classNames, criteriaClass, criteriaMethod, criteriaParam, checker, "_WAR_",null);
@@ -122,10 +122,10 @@ public class CertAnalysisRouting {
         Scene.v()
                 .setSootClassPath(
                         Utils.join(
-                                ";",
+                                ":",
                                 projectJarPath,
                                 Utils.getBaseSoot(javaHome),
-                                Utils.join(";", Utils.getJarsInDirectory(projectDependencyPath))));
+                                Utils.join(":", Utils.getJarsInDirectory(projectDependencyPath))));
         log.info("Setting the soot class path as: " + Scene.v().getSootClassPath());
 
         loadBaseSootInfo(classNames, criteriaClass, criteriaMethod, criteriaParam, checker, "_JAR_",null);
@@ -149,18 +149,18 @@ public class CertAnalysisRouting {
         Scene.v()
                 .setSootClassPath(
                         Utils.getBaseSoot(javaHome)
-                                + ";"
-                                + Utils.join(";", snippetPath)
-                                + ";"
+                                + ":"
+                                + Utils.join(":", snippetPath)
+                                + ":"
                                 + buildSootClassPath(projectDependency));
         log.debug("javaHome: " + javaHome);
         log.debug("soot path:" + Utils.getBaseSoot(javaHome)
-                + ";"
-                + Utils.join(";", snippetPath)
-                + ";"
+                + ":"
+                + Utils.join(":", snippetPath)
+                + ":"
                 + buildSootClassPath(projectDependency));
         log.debug("Utils.getBaseSoot(javaHome)" + Utils.getBaseSoot(javaHome));
-        log.debug("Utils.join(\":\", snippetPath)" + Utils.join(";", snippetPath));
+        log.debug("Utils.join(\":\", snippetPath)" + Utils.join(":", snippetPath));
         log.debug("Utils.buildSootClassPath(projectDependency)" + buildSootClassPath(projectDependency));
         List<String> classNames = Utils.getClassNamesFromSnippet(snippetPath);
         List<String> containJwtClassName = new ArrayList<>();

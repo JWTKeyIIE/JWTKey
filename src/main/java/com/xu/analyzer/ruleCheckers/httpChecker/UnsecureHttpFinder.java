@@ -118,6 +118,4 @@ public abstract class UnsecureHttpFinder extends BaseRuleChecker {
     }
 
     public abstract String getJwtLibName();
-
-    public abstract List<String> getCriteriaClasses();
 }

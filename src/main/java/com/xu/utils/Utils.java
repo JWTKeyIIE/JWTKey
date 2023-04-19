@@ -552,7 +552,6 @@ public class Utils {
      * @return
      */
     public static String trimFilePath(String fullFilePath) {
-//        String[] folderSplit = fullFilePath.split(Pattern.quote(fileSep));
         String[] folderSplit = fullFilePath.split(Pattern.quote(fileSep));
         return folderSplit[folderSplit.length - 1];
     }
@@ -707,19 +706,14 @@ public class Utils {
     }
 
     public static String getDefaultFileOut(String packageName, String fileExtension) {
-//        StringBuilder output = new StringBuilder("_" + projectName + "_");
-//
-//        if (StringUtils.isNotEmpty(packageName))
-//            output.append(StringUtils.trimToNull(packageName)).append("-");
-//
-//        output.append(UUID.randomUUID().toString()).append("_").append(fileExtension);
-//
-//        return Utils.osPathJoin(System.getProperty("user.dir"), output.toString());
-        StringBuilder output = new StringBuilder();
+        StringBuilder output = new StringBuilder("_" + projectName + "_");
+
         if (StringUtils.isNotEmpty(packageName))
-            output.append(StringUtils.trimToNull(packageName)).append("_");
-        output.append("JavaProjectErrs.txt");
-        return Utils.osPathJoin(System.getProperty("user.dir"),output.toString());
+            output.append(StringUtils.trimToNull(packageName)).append("-");
+
+        output.append(UUID.randomUUID().toString()).append("_").append(fileExtension);
+
+        return Utils.osPathJoin(System.getProperty("user.dir"), output.toString());
     }
 
     /**
@@ -808,7 +802,7 @@ public class Utils {
 
         setSunBootPath(javaPath, rt);
 
-        return Utils.join(";", javaPath, rt, jce);
+        return Utils.join(":", javaPath, rt, jce);
     }
 
     public static String osSurround(String... elements) {
@@ -864,7 +858,7 @@ public class Utils {
 
             if (path.toLowerCase().endsWith(".jar")) {
                 classPath.append(path);
-                classPath.append(";");
+                classPath.append(":");
             } else {
                 File dir = new File(path);
 
@@ -878,7 +872,7 @@ public class Utils {
                     for (File file : files) {
                         if (file.getName().toLowerCase().endsWith(".jar")) {
                             classPath.append(file.getAbsolutePath());
-                            classPath.append(";");
+                            classPath.append(":");
                         }
                     }
                 }

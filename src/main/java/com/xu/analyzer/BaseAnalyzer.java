@@ -88,7 +88,7 @@ public class BaseAnalyzer {
 
         NamedMethodMap.build(classNames);
 
-        NamedMethodMap.addCriteriaClasses(checker.getCriteriaClasses());
+        NamedMethodMap.addCriteriaClasses(checker.CRITERIA_CLASSES);
         NamedMethodMap.buildCallerCalleeRelation(classNames);
 
         FieldInitializationInstructionMap.build(classNames);
@@ -136,7 +136,7 @@ public class BaseAnalyzer {
                 NamedMethodMap.addSubCriteriaClass(subClass.getName());
             }
         } else {
-            NamedMethodMap.addCriteriaClasses(checker.getCriteriaClasses());
+            NamedMethodMap.addCriteriaClasses(checker.CRITERIA_CLASSES);
         }
         NamedMethodMap.buildCallerCalleeRelation(classNames);
 

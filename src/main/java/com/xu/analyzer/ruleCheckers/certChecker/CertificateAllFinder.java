@@ -38,9 +38,8 @@ public class CertificateAllFinder implements RuleChecker {
         criteria0.setMethodName("java.security.cert.Certificate generateCertificate(java.io.InputStream)");
         criteria0.setParam(0);
         CRITERIA_LIST.add(criteria0);
-        CRITERIA_CLASSES.add("java.security.cert.CertificateFactory");
 
-//        CRITERIA_CLASSES.add("java.security.cert.CertificateFactory");
+        CRITERIA_CLASSES.add("java.security.cert.CertificateFactory");
     }
 
     @Override

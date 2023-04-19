@@ -306,6 +306,4 @@ public abstract class ConstantKeyFinder extends BaseRuleChecker {
     }
 
     public abstract String getLibName();
-
-    public abstract List<String> getCriteriaClasses();
 }

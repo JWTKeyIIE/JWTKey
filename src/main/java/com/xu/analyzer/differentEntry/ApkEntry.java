@@ -43,7 +43,7 @@ public class ApkEntry implements EntryHandler{
             String jwtInfoPath = info.getBuildRootDir().split(":")[0] + "/JWTResult.json";
             try {
                 ruleChecker.checkRule(
-                        SourceType.APK,
+                        SourceType.WAR,
                         info.getSource(),
                         info.getDependencies(),
                         info.getSourcePaths(),

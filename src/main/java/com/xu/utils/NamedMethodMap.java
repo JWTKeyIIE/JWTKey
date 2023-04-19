@@ -172,7 +172,6 @@ public class NamedMethodMap {
         Map<String, List<SootClass>> classHierarchy = Utils.getClassHierarchyAnalysis(classNames);
 
         for (String className : classNames) {
-            log.debug("Analysis " + className);
             SootClass sClass = Scene.v().getSootClass(className);
 
             //迭代Class中的所有方法

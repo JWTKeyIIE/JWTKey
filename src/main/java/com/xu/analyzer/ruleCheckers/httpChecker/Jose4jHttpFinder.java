@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Jose4jHttpFinder extends UnsecureHttpFinder{
     private static final List<Criteria> CRITERIA_LIST = new ArrayList<>();
-    private static final List<String> CRITERIA_CLASSES = new ArrayList<>();
     static {
         Criteria criteria0 = new Criteria();
         criteria0.setClassName("org.jose4j.jwk.HttpsJwks");
@@ -21,11 +20,6 @@ public class Jose4jHttpFinder extends UnsecureHttpFinder{
     @Override
     public List<Criteria> getCriteriaList() {
         return CRITERIA_LIST;
-    }
-
-    @Override
-    public List<String> getCriteriaClasses() {
-        return CRITERIA_CLASSES;
     }
 
     @Override

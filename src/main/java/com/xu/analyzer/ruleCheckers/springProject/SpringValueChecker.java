@@ -16,12 +16,12 @@ import com.xu.environmentInit.enumClass.SourceType;
 import com.xu.output.AnalysisIssue;
 import com.xu.output.MessagingSystem.routing.outputStructures.OutputStructure;
 import com.xu.utils.Utils;
-import com.xu.utils.YmlNode;
 import org.apache.logging.log4j.Logger;
-import com.xu.utils.yamlUtil;
-import org.yaml.snakeyaml.Yaml;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -176,20 +176,9 @@ public class SpringValueChecker implements RuleChecker {
         } else {
             List<SpringFieldValueInfo> results = new ArrayList<>();
             for (String propertyFile : propertyFiles) {
+                FileInputStream inputStream = new FileInputStream(propertyFile);
                 Properties prop = new Properties();
-                if(propertyFile.endsWith("yml")){
-                    File ymlFile = new File(propertyFile);
-                    String yml = yamlUtil.read(ymlFile);
-                    List<YmlNode> nodeList = yamlUtil.getNodeList(yml);
-                    String str = yamlUtil.printNodeList(nodeList);
-                    prop.load(new StringReader(str));
-                }
-                else {
-                    FileInputStream inputStream = new FileInputStream(propertyFile);
-//                    Properties prop = new Properties();
-                    prop.load(inputStream);
-                }
-
+                prop.load(inputStream);
                 for (String key : prop.stringPropertyNames()) {
                     //处理对称key
                     if (key.toLowerCase().contains("jwt") && key.toLowerCase().contains("secret")) {

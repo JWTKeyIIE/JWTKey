@@ -23,13 +23,7 @@ public class GainCriteriaRule {
 //        String libUrl = "/home/xu/xu/JWTGuard/FIDO2JWTVerify.jar";
 //        String libUrl = "/home/xu/xu/JWTGuardTestLib/Cert_lib/web-utils/build/libs/web-utils-2.9.8.jar";
 //        String libUrl = "/home/xu/xu/JWTGuard/TestJose4j-1.0-SNAPSHOT.jar";
-//        String libUrl = "/home/xu/xu/JWTGuard/video.jar";
-//        String libUrl = "C:\\Users\\Lenovo\\Desktop\\JAVAJWT\\Complete\\JWTGuard\\jwtLib\\jjwt-api-0.11.5.jar";
-//        String libUrl = "/home/xu/xu/JWTGuard/jwtLib/nimbus-jose-jwt-9.8.1.jar";
-//        String libUrl = "C:\\Users\\Lenovo\\Desktop\\JAVAJWT\\Complete\\JWTGuard\\spring\\spring-security-oauth2-2.3.5.RELEASE.jar";
-//        String libUrl = "C:\\Users\\Lenovo\\Desktop\\JAVAJWT\\Complete\\JWTGuard\\jwtLib\\jose4j-0.6.2.jar";
-//        String libUrl = "C:\\Users\\Lenovo\\Desktop\\JAVAJWT\\Complete\\JWTGuard\\javalib\\rt.jar";
-        String libUrl = "C:\\Users\\Lenovo\\Desktop\\JAVAJWT\\Complete\\JWTGuard\\jwtLib\\nimbus-jose-jwt-9.8.1.jar";
+        String libUrl = "/home/xu/xu/JWTGuard/video.jar";
         String[] argsParam = new String[]{"-in", "jar","-s",libUrl,"-V"};
         log.info("argsParam length: " + argsParam.length);
 

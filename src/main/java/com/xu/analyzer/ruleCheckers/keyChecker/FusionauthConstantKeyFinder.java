@@ -10,7 +10,6 @@ public class FusionauthConstantKeyFinder extends ConstantKeyFinder {
     private static final Logger log =
             org.apache.logging.log4j.LogManager.getLogger(FusionauthConstantKeyFinder.class);
     private static final List<Criteria> CRITERIA_LIST = new ArrayList<>();
-    private static final List<String> CRITERIA_CLASSES = new ArrayList<>();
     static {
         Criteria criteria0 = new Criteria();
         criteria0.setClassName("io.fusionauth.jwt.hmac.HMACVerifier");
@@ -56,6 +55,4 @@ public class FusionauthConstantKeyFinder extends ConstantKeyFinder {
     public String getLibName() {
         return "FusionAuth";
     }
-
-    public List<String> getCriteriaClasses(){return CRITERIA_CLASSES;}
 }

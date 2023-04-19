@@ -10,7 +10,6 @@ public class JjwtConstantKeyFinder extends ConstantKeyFinder {
     private static final Logger log =
             org.apache.logging.log4j.LogManager.getLogger(JjwtConstantKeyFinder.class);
     private static final List<Criteria> CRITERIA_LIST = new ArrayList<>();
-    private static final List<String> CRITERIA_CLASSES = new ArrayList<>();
     static {
 /*        Criteria criteria0 = new Criteria();
         criteria0.setClassName("io.jsonwebtoken.impl.DefaultJwtParser");
@@ -43,9 +42,9 @@ public class JjwtConstantKeyFinder extends ConstantKeyFinder {
         criteria5.setParam(0);
         CRITERIA_LIST.add(criteria5);
 
-        CRITERIA_CLASSES.add("io.jsonwebtoken.impl.DefaultJwtParser");
+/*        CRITERIA_CLASSES.add("io.jsonwebtoken.impl.DefaultJwtParser");
         CRITERIA_CLASSES.add("io.jsonwebtoken.Jwts");
-        CRITERIA_CLASSES.add("io.jsonwebtoken.JwtParser");
+        CRITERIA_CLASSES.add("io.jsonwebtoken.JwtParser");*/
     }
 
     @Override
@@ -57,5 +56,4 @@ public class JjwtConstantKeyFinder extends ConstantKeyFinder {
     public String getLibName() {
         return "jjwt";
     }
-    public List<String> getCriteriaClasses(){return CRITERIA_CLASSES;}
 }

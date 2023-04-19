@@ -10,7 +10,6 @@ public class Jose4jConstantKeyFinder extends ConstantKeyFinder {
     private static final Logger log =
             org.apache.logging.log4j.LogManager.getLogger(Jose4jConstantKeyFinder.class);
     private static final List<Criteria> CRITERIA_LIST = new ArrayList<>();
-    private static final List<String> CRITERIA_CLASSES = new ArrayList<>();
 
     static {
 /*        Criteria criteria0 = new Criteria();
@@ -47,6 +46,4 @@ public class Jose4jConstantKeyFinder extends ConstantKeyFinder {
     public String getLibName() {
         return "jose4j";
     }
-
-    public List<String> getCriteriaClasses(){return CRITERIA_CLASSES;}
 }

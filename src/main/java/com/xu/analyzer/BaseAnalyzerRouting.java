@@ -1,9 +1,9 @@
 package com.xu.analyzer;
 
-import com.xu.analyzer.ruleCheckers.BaseRuleChecker;
 import com.xu.environmentInit.Exception.ExceptionHandler;
 import com.xu.environmentInit.Exception.ExceptionId;
 import com.xu.environmentInit.enumClass.SourceType;
+import com.xu.analyzer.ruleCheckers.BaseRuleChecker;
 import com.xu.utils.Utils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.Logger;
@@ -131,16 +131,15 @@ public class BaseAnalyzerRouting {
         Scene.v()
                 .setSootClassPath(
                         Utils.join(
-                                ";",
+                                ":",
                                 projectJarPath,
                                 Utils.getBaseSoot(javaHome),
-                                Utils.join(";", Utils.getJarsInDirectory(projectDependencyPath))));
+                                Utils.join(":", Utils.getJarsInDirectory(projectDependencyPath))));
         log.info("Setting the soot class path as: " + Scene.v().getSootClassPath());
 
-        loadBaseSootInfo(classNames, criteriaClass, criteriaMethod, criteriaParam, checker, "_WAR_", null);
+        loadBaseSootInfo(classNames, criteriaClass, criteriaMethod, criteriaParam, checker, "_WAR_",null);
         //删除temp目录
     }
-
     public static void setupBaseJar(String criteriaClass,
                                     String criteriaMethod,
                                     int criteriaParam,
@@ -158,16 +157,15 @@ public class BaseAnalyzerRouting {
         Scene.v()
                 .setSootClassPath(
                         Utils.join(
-                                ";",
+                                ":",
                                 projectJarPath,
                                 Utils.getBaseSoot(javaHome),
-                                Utils.join(";", Utils.getJarsInDirectory(projectDependencyPath))));
+                                Utils.join(":", Utils.getJarsInDirectory(projectDependencyPath))));
         log.info("Setting the soot class path as: " + Scene.v().getSootClassPath());
 
-        loadBaseSootInfo(classNames, criteriaClass, criteriaMethod, criteriaParam, checker, "_JAR_", null);
+        loadBaseSootInfo(classNames, criteriaClass, criteriaMethod, criteriaParam, checker, "_JAR_",null);
 
     }
-
     public static void setupBaseDir(
             String criteriaClass,
             String criteriaMethod,
@@ -186,33 +184,34 @@ public class BaseAnalyzerRouting {
         Scene.v()
                 .setSootClassPath(
                         Utils.getBaseSoot(javaHome)
-                                + ";"
-                                + Utils.join(";", snippetPath)
-                                + ";"
+                                + ":"
+                                + Utils.join(":", snippetPath)
+                                + ":"
                                 + buildSootClassPath(projectDependency));
         log.debug("javaHome: " + javaHome);
         log.debug("soot path:" + Utils.getBaseSoot(javaHome)
-                + ";"
-                + Utils.join(";", snippetPath)
-                + ";"
+                + ":"
+                + Utils.join(":", snippetPath)
+                + ":"
                 + buildSootClassPath(projectDependency));
         log.debug("Utils.getBaseSoot(javaHome)" + Utils.getBaseSoot(javaHome));
-        log.debug("Utils.join(\";\", snippetPath)" + Utils.join(";", snippetPath));
+        log.debug("Utils.join(\":\", snippetPath)" + Utils.join(":", snippetPath));
         log.debug("Utils.buildSootClassPath(projectDependency)" + buildSootClassPath(projectDependency));
         List<String> classNames = Utils.getClassNamesFromSnippet(snippetPath);
         List<String> containJwtClassName = new ArrayList<>();
 
         try {
-            if (getLibraryJwtUseInfo(jwtInfoPath) != null) {
+            if(getLibraryJwtUseInfo(jwtInfoPath) != null){
                 containJwtClassName = getJwtContainClassName(Utils.getLibraryJwtUseInfo(jwtInfoPath).getFullPath());
-            } else {
+            }
+            else {
                 containJwtClassName = null;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        loadBaseSootInfo(classNames, criteriaClass, criteriaMethod, criteriaParam, checker, "_DIR_", containJwtClassName);
+            loadBaseSootInfo(classNames, criteriaClass, criteriaMethod, criteriaParam, checker, "_DIR_", containJwtClassName);
     }
 
     public static void loadBaseSootInfo(
@@ -229,7 +228,7 @@ public class BaseAnalyzerRouting {
         Options.v().set_allow_phantom_refs(true);
         List<String> ignoreLibs =
                 Arrays.asList("okhttp3.Request$Builder", "retrofit2.Retrofit$Builder");
-        for (String clazz : checker.getCriteriaClasses()) {
+        for (String clazz : checker.CRITERIA_CLASSES) {
             log.debug("Loading with the class: " + clazz);
             try {
                 SootClass runningClass;
@@ -260,8 +259,8 @@ public class BaseAnalyzerRouting {
                         && !mainKlass.equals("_APK_")
                         && !mainKlass.equals("_DIR_");
 
-        if (jwtContainClass != null && !jwtContainClass.isEmpty()) {
-            for (String jwtClass : jwtContainClass) {
+        if (jwtContainClass != null &&!jwtContainClass.isEmpty() ){
+            for (String jwtClass : jwtContainClass){
                 for (String clazz : classNames) {
                     if (clazz.contains(jwtClass)) {
                         try {
@@ -272,7 +271,7 @@ public class BaseAnalyzerRouting {
                                         "Class " + clazz + " is not properly loaded", ExceptionId.LOADING);
                             }
                             SootClass jwtclass = Scene.v().getSootClass(clazz);
-                            for (SootMethod m : jwtclass.getMethods()) {
+                            for(SootMethod m : jwtclass.getMethods()){
                                 JimpleBody body = (JimpleBody) m.retrieveActiveBody();
                                 log.info("Method signature: " + m.getSignature() + "\nbody:" + m.getActiveBody().toString());
                             }
@@ -286,7 +285,7 @@ public class BaseAnalyzerRouting {
                                         ExceptionId.FILE_READ);
                             }
                             log.debug("Successfully loaded the Class: " + clazz);
-                        } catch (ExceptionHandler e) {
+                        }catch (ExceptionHandler e) {
                             throw e;
                         } catch (Error | Exception e) {
                             log.fatal("Error loading class " + clazz);
@@ -297,8 +296,9 @@ public class BaseAnalyzerRouting {
 
                 }
             }
-        } else {
-            for (String clazz : classNames) {
+        }
+        else {
+            for(String clazz : classNames) {
                 try {
                     SootClass runningClass = Scene.v().loadClassAndSupport(clazz);
                     if (runningClass.isPhantom()) {
